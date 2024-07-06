@@ -1,6 +1,6 @@
 {
   "name": "random-test-data-generator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "description": "A simple package to create random test data",
   "main": "index.js",
@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/night5415/LoremAndNames/issues"
   },
-  "homepage": "https://github.com/night5415/LoremAndNames#readme"
+  "homepage": "https://github.com/night5415/LoremAndNames#readme",
+  "devDependencies": {
+    "typescript": "^5.5.3"
+  }
 }
