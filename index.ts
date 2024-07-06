@@ -3013,8 +3013,19 @@ const lastNames = [
     "Belle",
     "Kadence",
   ],
+  /**
+   * Returns a random number between the provided min/max
+   * @param {number} min - The minimum value to be returned.
+   * @param {number} max - The maximum value to be returned.
+   * @returns {number}
+   */
   getRandomNumber = (max = 100, min = 0) =>
     Math.floor(Math.random() * (max - min + 1)) + min,
+  /**
+  * Returns a random date from the past.
+  * @param {number} maxAge - Maximum years in the past date can be.
+  * @returns {date} A randomized date
+  */
   getRandomDate = (maxAge = 90) => {
     const today = new Date(),
       maxYear = today.getFullYear(),
@@ -3044,6 +3055,11 @@ const lastNames = [
       gender,
     };
   },
+  /**
+   * Returns a list of random people.
+   * @param {number} count - How many people objects to return.
+   * @returns {Person[]} A list of people.
+   */
   getPeople = (count: number) => {
     const people = [],
       config = {
@@ -3054,15 +3070,7 @@ const lastNames = [
       count--;
       people.push(getPerson(config));
     }
-
-    switch (people.length) {
-      case 0:
-        return null;
-      case 1:
-        return people[0];
-      default:
-        return people;
-    }
+    return people;
   };
 
 export { getPeople, getRandomDate, getRandomNumber };
