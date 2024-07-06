@@ -1,0 +1,24 @@
+{
+  "name": "random-test-data-generator",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A simple package to create random test data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/night5415/LoremAndNames.git"
+  },
+  "keywords": [
+    "test",
+    "data"
+  ],
+  "author": "Michael Meloy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/night5415/LoremAndNames/issues"
+  },
+  "homepage": "https://github.com/night5415/LoremAndNames#readme"
+}

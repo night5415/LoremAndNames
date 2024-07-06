@@ -3001,57 +3001,57 @@ const lastNames = [
     "Mazikee",
     "Belle",
     "Kadence",
-  ];
-
-const getRandomNumber = (max, min = 0) =>
+  ],
+  getRandomNumber = (max = 100, min = 0) =>
     Math.floor(Math.random() * (max - min + 1)) + min,
-  getRandomDate = () => {
+  getRandomDate = (maxAge = 90) => {
     let today = new Date(),
       maxYear = today.getFullYear(),
-      minYear = maxYear - 90,
+      minYear = maxYear - maxAge,
       day = getRandomNumber(28, 1),
       month = getRandomNumber(11, 0),
       year = getRandomNumber(maxYear, minYear);
 
     return new Date(year, month, day);
-  };
+  },
+  getPerson = (config = {}) => {
+    const { genders = [] } = config,
+      lNameMax = lastNames.length - 1,
+      fNameMax = firstNames.length - 1,
+      fRand = getRandomNumber(fNameMax),
+      lRand = getRandomNumber(lNameMax),
+      firstName = firstNames.at(fRand),
+      lastName = lastNames.at(lRand),
+      birthDay = getRandomDate(),
+      val = getRandomNumber(genders.length - 1, 0),
+      gender = genders[val];
 
-function getUser(vars = {}) {
-  const { genders = [] } = vars;
-
-  const lNameMax = lastNames.length - 1,
-    fNameMax = firstNames.length - 1,
-    fRand = getRandomNumber(fNameMax),
-    lRand = getRandomNumber(lNameMax),
-    firstName = firstNames.at(fRand),
-    lastName = lastNames.at(lRand),
-    birthDay = getRandomDate(),
-    val = getRandomNumber(genders.length - 1, 0),
-    gender = genders[val];
-
-  return {
-    firstName,
-    lastName,
-    birthDay,
-    gender,
-  };
-}
-
-function getUsers(count) {
-  let namesArray = [],
-    config = {
-      genders: ["Male", "Female"],
+    return {
+      firstName,
+      lastName,
+      birthDay,
+      gender,
     };
+  },
+  getPeople = (count) => {
+    const people = [],
+      config = {
+        genders: ["Male", "Female"],
+      };
 
-  while (count >= 0) {
-    count--;
-    namesArray.push(getUser(config));
-  }
+    while (count > 0) {
+      count--;
+      people.push(getPerson(config));
+    }
 
-  return namesArray;
-}
+    switch (people.length) {
+      case 0:
+        return null;
+      case 1:
+        return people[0];
+      default:
+        return people;
+    }
+  };
 
-export default {
-  getUser,
-  getUsers,
-};
+export { getPeople, getRandomDate, getRandomNumber };
